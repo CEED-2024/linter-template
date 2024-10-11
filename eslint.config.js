@@ -1,25 +1,30 @@
-{
-  "plugins": [
-    "html"
-  ],
-  "env": {
-      "browser": true,
-      "es2021": true,
-      "jest": true,
-      "node": true
-  },
-  "extends": "eslint:recommended",
-  "parserOptions": {
-      "ecmaVersion": 13,
-      "sourceType": "module"
-  },
-  "ignorePatterns": ["**/dist/*"],
-  "noInlineConfig": true,
-  "reportUnusedDisableDirectives": true,
-  // You can check the rules here: https://eslint.org/docs/rules/
-  // If eslint is complaining about a rule not enumerated here, you can ignore it.
-  "rules": {
-      "complexity": ["error", { "max": 5 }],
+import htmlPlugin from "eslint-plugin-html"
+
+export default [
+  {
+    plugins: {
+      html: htmlPlugin,
+    },
+    ignores: ["**/dist/*"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: {
+        document: "readonly",
+        window: "readonly",
+        console: "readonly",
+        browser: true,
+        es2021: true,
+        jest: true,
+        node: true
+      },
+    },
+    linterOptions: {
+      noInlineConfig: true,
+      reportUnusedDisableDirectives: true
+    },
+    rules: {
+      complexity: ["error", { max: 5 }],
       "array-callback-return": "error",
       "constructor-super": "error",
       "for-direction": "error",
@@ -75,6 +80,7 @@
       "no-useless-backreference": "error",
       "require-atomic-updates": "error",
       "use-isnan": "error",
-      "valid-typeof": "error"
-  }
-}
+      "valid-typeof": "error",
+    },
+  },
+]
