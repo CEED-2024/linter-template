@@ -5,6 +5,7 @@ export default [
     plugins: {
       html: htmlPlugin,
     },
+    files: ["**/*.html", "**/*.js"],
     ignores: ["**/dist/*"],
     languageOptions: {
       ecmaVersion: "latest",
